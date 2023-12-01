@@ -1,21 +1,27 @@
 # Big Data Project for IoT
 
-This project is part of a school module called IoT Applications. The project aims to establish a connection from sensors to a database and a dashboard, displaying values in real-time and batch mode. The code is primarily composed of Python scripts, with the main file being `mqttConsumer.py`. This file consumes data from sensors and publishes them to Kafka topics. The data from Kafka topics are then inserted into a MongoDB database. Future work includes implementing a dashboard that displays analytics.
+This project is part of a school module called IoT Applications, focusing on connecting sensors to a database and a dashboard for real-time and batch-mode data visualization. The codebase predominantly consists of Python scripts, with the pivotal `mqttConsumer.py` file responsible for consuming sensor data and publishing it to Kafka topics. Subsequently, the data from Kafka topics is stored in a MongoDB database. Ongoing efforts include the development of a dashboard to showcase analytics.
 
 ## How to Run
 
-To run the demo, follow these steps:
+To run the demonstration, follow these steps:
 
-1. Navigate to the Docker folder and run the following command:
+1. Begin by navigating to the Docker folder and executing the following command:
 
-    ```
+    ```bash
     sudo docker-compose up -d --build
     ```
 
-2. After that, run `createKafkaTopic.py` to create Kafka topics.
+2. After the Docker setup, proceed to the `src` folder:
 
-3. Run either `mqttTHC.py`, `mqttPersons.py`, or `mqttFire.py` to simulate the sensors.
+    ```bash
+    cd src
+    ```
 
-4. Finally, run `mqttConsumer.py` to execute MQTT consumers, which will send consumed data to Kafka topics. You can access the data through one of the following consumers: `FireConsumer.py`, `HumidityConsumer.py`, `PersonsConsumer.py`, `TemperatureConsumer.py`, or `CO2Consumer.py`. These consumers will listen to topics and save received values into MongoDB. Make sure to create a MongoDB database named `iotbigdataproject` and collections under the names `fire`, `humidity`, and so on.
+3. Within the `src` directory, run `createKafkaTopic.py` to initialize the required Kafka topics.
 
-A dashboard will be implemented in the future to display analytics.
+4. Simulate sensor data by running either `mqttTHC.py`, `mqttPersons.py`, or `mqttFire.py`.
+
+5. Execute `mqttConsumer.py` to activate MQTT consumers, responsible for transmitting consumed data to Kafka topics. Access the data through dedicated consumers such as `FireConsumer.py`, `HumidityConsumer.py`, `PersonsConsumer.py`, `TemperatureConsumer.py`, or `CO2Consumer.py`. These consumers listen to topics and store received values in a MongoDB database. Ensure to create a MongoDB database named `iotbigdataproject` with collections under names like `fire`, `humidity`, and others.
+
+A dashboard, intended to present comprehensive analytics, is part of future development.
